@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compassionate behavior strategies for raising intense, brilliant kids. Free co-regulation scripts for neurodivergent-aware moms.">
+    <meta name="theme-color" content="#4B0082">
+    <title>Indigo Kids | Behavior Strategies for Brilliant, Intense Children</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-indigo: #4B0082;
+            --accent-teal: #20B2AA;
+            --light-bg: #FAFAF8;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+            --white: #FFFFFF;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.8rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(75, 0, 130, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-indigo);
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-eye {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-indigo), var(--accent-teal));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-indigo), var(--accent-teal));
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(75, 0, 130, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.03), rgba(32, 178, 170, 0.03));
+            padding: 6rem 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(75, 0, 130, 0.05), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .indigo-eye-logo {
+            width: 120px;
+            height: 120px;
+            animation: gentle-float 3s ease-in-out infinite;
+        }
+
+        @keyframes gentle-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            color: var(--primary-indigo);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .comment-cta {
+            font-size: 1.1rem;
+            color: var(--primary-indigo);
+            font-weight: 600;
+            margin-top: 2rem;
+            display: block;
+            animation: pulse-subtle 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Section Layout */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-indigo);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-indigo), var(--accent-teal));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-indigo);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .about-features li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .about-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-indigo), var(--accent-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.1), rgba(32, 178, 170, 0.1));
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(75, 0, 130, 0.2), transparent);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .about-image-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--primary-indigo);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Resources Section */
+        .resources {
+            background: linear-gradient(180deg, rgba(75, 0, 130, 0.02), transparent);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(75, 0, 130, 0.12);
+            border-color: var(--accent-teal);
+        }
+
+        .resource-video-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.08), rgba(32, 178, 170, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-indigo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.3);
+        }
+
+        .resource-video-placeholder:hover .play-button {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(75, 0, 130, 0.4);
+        }
+
+        .resource-content {
+            padding: 2rem;
+        }
+
+        .resource-content h3 {
+            color: var(--primary-indigo);
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Opt-in Form Section */
+        .optin {
+            background: linear-gradient(135deg, var(--primary-indigo), rgba(75, 0, 130, 0.9));
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .optin-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .optin h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .optin p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(44, 44, 44, 0.5);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-teal), #0099AA);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(32, 178, 170, 0.4);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-notice {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+                min-height: auto;
+            }
+
+            .optin {
+                padding: 3rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Utility Classes */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <svg class="logo-eye" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Crown/Keyhole shapes -->
+                    <g>
+                        <circle cx="30" cy="12" r="8" fill="#4B0082" opacity="0.8"/>
+                        <circle cx="50" cy="8" r="9" fill="#4B0082"/>
+                        <circle cx="70" cy="12" r="8" fill="#4B0082" opacity="0.8"/>
+                        <ellipse cx="20" cy="28" rx="5" ry="12" fill="#4B0082" opacity="0.7"/>
+                        <ellipse cx="80" cy="28" rx="5" ry="12" fill="#4B0082" opacity="0.7"/>
+                    </g>
+                    <!-- Almond eye outline -->
+                    <ellipse cx="50" cy="55" rx="38" ry="28" fill="none" stroke="#4B0082" stroke-width="4"/>
+                    <!-- Outer iris circle -->
+                    <circle cx="50" cy="55" r="24" fill="none" stroke="#20B2AA" stroke-width="2"/>
+                    <!-- Middle iris circle -->
+                    <circle cx="50" cy="55" r="18" fill="none" stroke="#4B0082" stroke-width="1.5"/>
+                    <!-- Inner iris -->
+                    <circle cx="50" cy="55" r="14" fill="#20B2AA" opacity="0.3"/>
+                    <!-- Pupil -->
+                    <circle cx="50" cy="55" r="8" fill="#4B0082"/>
+                    <!-- Light reflection -->
+                    <circle cx="47" cy="52" r="2.5" fill="#FFFFFF" opacity="0.8"/>
+                </svg>
+                <span>Indigo Kids</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#optin" class="cta-button">Get Free Scripts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <svg class="indigo-eye-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Crown/Keyhole shapes -->
+                    <g>
+                        <circle cx="30" cy="12" r="8" fill="#4B0082" opacity="0.8"/>
+                        <circle cx="50" cy="8" r="9" fill="#4B0082"/>
+                        <circle cx="70" cy="12" r="8" fill="#4B0082" opacity="0.8"/>
+                        <ellipse cx="20" cy="28" rx="5" ry="12" fill="#4B0082" opacity="0.7"/>
+                        <ellipse cx="80" cy="28" rx="5" ry="12" fill="#4B0082" opacity="0.7"/>
+                    </g>
+                    <!-- Almond eye outline -->
+                    <ellipse cx="50" cy="55" rx="38" ry="28" fill="none" stroke="#4B0082" stroke-width="4"/>
+                    <!-- Outer iris circle -->
+                    <circle cx="50" cy="55" r="24" fill="none" stroke="#20B2AA" stroke-width="2"/>
+                    <!-- Middle iris circle -->
+                    <circle cx="50" cy="55" r="18" fill="none" stroke="#4B0082" stroke-width="1.5"/>
+                    <!-- Inner iris -->
+                    <circle cx="50" cy="55" r="14" fill="#20B2AA" opacity="0.3"/>
+                    <!-- Pupil -->
+                    <circle cx="50" cy="55" r="8" fill="#4B0082"/>
+                    <!-- Light reflection -->
+                    <circle cx="47" cy="52" r="2.5" fill="#FFFFFF" opacity="0.8"/>
+                </svg>
+            </div>
+            <h1>Raising intense, brilliant kids without losing your mind</h1>
+            <p class="hero-subtitle">Compassionate behavior strategies for real moms. Master co-regulation, understand your child's intensity, and build a calmer home—starting today.</p>
+            <div class="hero-cta">
+                <a href="#optin" class="cta-button">Claim Your Free Scripts</a>
+            </div>
+            <p class="comment-cta">💬 Comment CALM below for instant access</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2>For Neurodivergent-Aware Moms</h2>
+            <p>Real strategies. Non-judgmental wisdom. A compassionate community that gets it.</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>You're not alone in this.</h3>
+                <p>Raising a child with big emotions, strong opinions, or a neurodivergent brain can feel isolating—especially when behavior advice feels cold, punitive, or completely off-base for your kid's wiring.</p>
+                <p>Indigo Kids is here to change that. We believe:</p>
+                <ul class="about-features">
+                    <li>Your child's intensity is a feature, not a bug</li>
+                    <li>Co-regulation is more powerful than control</li>
+                    <li>You deserve strategies that honor *your* child's neurobiology</li>
+                    <li>Motherhood is hard. You need warmth, not judgment</li>
+                    <li>Small shifts in approach unlock big changes in behavior</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <p class="about-image-text">Compassionate. Evidence-informed. Real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="section-header">
+            <h2>Free Resources & Insights</h2>
+            <p>Practical tools, video guidance, and expert wisdom to help you navigate parenting with confidence.</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-video-placeholder">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="resource-content">
+                    <h3>Co-Regulation Essentials</h3>
+                    <p>Learn the neuroscience behind co-regulation and three powerful techniques you can use today.</p>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-video-placeholder">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="resource-content">
+                    <h3>Understanding Your Intense Child</h3>
+                    <p>Why your child has bigger reactions than their peers, and how that wiring creates brilliance.</p>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="resource-video-placeholder">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="resource-content">
+                    <h3>Behavior Reframes That Work</h3>
+                    <p>Shift your perspective on "misbehavior"—and watch your response to your child transform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opt-in Section -->
+    <section class="optin" id="optin">
+        <div class="optin-content">
+            <h2>Get the Free Co-Regulation Scripts</h2>
+            <p>7 ready-to-use scripts you can use the moment your child's overwhelmed, dysregulated, or spiraling. Download instantly—no delays, no upsell.</p>
+            
+            <form id="optinForm" class="optin-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        name="firstName" 
+                        placeholder="First Name" 
+                        required 
+                        aria-label="First Name"
+                    >
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Email Address" 
+                        required 
+                        aria-label="Email Address"
+                    >
+                </div>
+                <div class="form-group">
+                    <select name="primaryChallenge" aria-label="What's your primary parenting challenge?">
+                        <option value="">What's your primary challenge?</option>
+                        <option value="tantrums">Big tantrums & emotional meltdowns</option>
+                        <option value="defiance">Defiance & power struggles</option>
+                        <option value="anxiety">Anxiety & overwhelm</option>
+                        <option value="attention">Attention & focus issues</option>
+                        <option value="sensitivity">High sensitivity & sensory overwhelm</option>
+                        <option value="combination">A mix of everything</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-submit">Send Me the Free Scripts →</button>
+                <p class="form-notice">No spam, ever. You'll get instant access to the PDF plus weekly behavior insights.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Indigo Kids. Compassionate parenting for brilliant, intense children.</p>
+        <p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a> | <a href="#contact">Contact</a></p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll behavior (enhanced)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Handling
+        const optinForm = document.getElementById('optinForm');
+        
+        optinForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                firstName: document.querySelector('input[name="firstName"]').value,
+                email: document.querySelector('input[name="email"]').value,
+                primaryChallenge: document.querySelector('select[name="primaryChallenge"]').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Log data (for development/demo purposes)
+            console.log('Form submitted:', formData);
+
+            // HERE: Integrate with your email service
+            // Examples:
+            // - ConvertKit API
+            // - Mailchimp API
+            // - Zapier webhook
+            // - Custom backend endpoint
+            
+            // For now, show success message
+            const submitBtn = optinForm.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = '✓ Check your email!';
+            submitBtn.disabled = true;
+            
+            // Reset form
+            optinForm.reset();
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+
+        // Play button interactivity (placeholder for video embed)
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Video embed will go here. Connect to YouTube, Vimeo, or Wistia.');
+            });
+        });
+
+        // Lazy load images (if you add any)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Analytics / Tracking (add your service)
+        // Example: Google Analytics, Heap, Mixpanel
+        // window.addEventListener('scroll', () => {
+        //   // Track scroll depth
+        // });
+    </script>
+</body>
+</html>
