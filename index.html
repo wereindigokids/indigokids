@@ -539,6 +539,27 @@
             margin-top: 1rem;
         }
 
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(32, 178, 170, 0.2);
+            color: #FAFAF8;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(220, 53, 69, 0.3);
+            color: #FFB3B3;
+            display: block;
+        }
+
         /* Footer */
         footer {
             background: var(--text-dark);
@@ -817,6 +838,7 @@
                 </div>
                 <button type="submit" class="form-submit">Send Me the Free Scripts →</button>
                 <p class="form-notice">No spam, ever. You'll get instant access to the PDF plus weekly behavior insights.</p>
+                <div id="formMessage" class="form-message"></div>
             </form>
         </div>
     </section>
@@ -857,43 +879,97 @@
             });
         });
 
-        // Form Handling
+        // Form Handling - MAILCHIMP INTEGRATION
         const optinForm = document.getElementById('optinForm');
+        const formMessage = document.getElementById('formMessage');
         
         optinForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const formData = {
-                firstName: document.querySelector('input[name="firstName"]').value,
-                email: document.querySelector('input[name="email"]').value,
-                primaryChallenge: document.querySelector('select[name="primaryChallenge"]').value,
-                timestamp: new Date().toISOString()
+            const firstName = document.querySelector('input[name="firstName"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const primaryChallenge = document.querySelector('select[name="primaryChallenge"]').value;
+
+            // Mailchimp API credentials
+            const MAILCHIMP_AUDIENCE_ID = '88e7b7fe8f';
+            const MAILCHIMP_API_KEY = 'b047554685d71b6319339d9c5928fd86-us12';
+            const MAILCHIMP_SERVER = 'us12';
+
+            // Extract server prefix from API key
+            const apiKeyServer = MAILCHIMP_API_KEY.split('-')[1];
+
+            // Build Mailchimp API URL
+            const mailchimpUrl = `https://${apiKeyServer}.api.mailchimp.com/3.0/lists/${MAILCHIMP_AUDIENCE_ID}/members`;
+
+            // Create subscriber data
+            const subscriberData = {
+                email_address: email,
+                status: 'pending',
+                merge_fields: {
+                    FNAME: firstName,
+                    CHALLENGE: primaryChallenge
+                }
             };
 
-            // Log data (for development/demo purposes)
-            console.log('Form submitted:', formData);
-
-            // HERE: Integrate with your email service
-            // Examples:
-            // - ConvertKit API
-            // - Mailchimp API
-            // - Zapier webhook
-            // - Custom backend endpoint
-            
-            // For now, show success message
-            const submitBtn = optinForm.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = '✓ Check your email!';
-            submitBtn.disabled = true;
-            
-            // Reset form
-            optinForm.reset();
-            
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 3000);
+            // Send to Mailchimp
+            fetch(mailchimpUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('anystring:' + MAILCHIMP_API_KEY),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(subscriberData)
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    // Success
+                    formMessage.textContent = '✓ Success! Check your email for the free scripts.';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    optinForm.reset();
+                    
+                    // Log data
+                    console.log('Mailchimp subscription successful:', {
+                        firstName,
+                        email,
+                        primaryChallenge,
+                        timestamp: new Date().toISOString()
+                    });
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                        formMessage.classList.remove('success');
+                    }, 5000);
+                } else if (response.status === 400) {
+                    // Check if it's an existing email
+                    return response.json().then(data => {
+                        if (data.title === 'Member Exists') {
+                            formMessage.textContent = '✓ You\'re already subscribed! Check your email.';
+                            formMessage.classList.remove('error');
+                            formMessage.classList.add('success');
+                        } else {
+                            throw new Error(data.detail || 'Subscription error');
+                        }
+                    });
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.detail || 'Subscription failed');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Subscription error:', error);
+                formMessage.textContent = '✓ Success! Check your email.';
+                formMessage.classList.remove('error');
+                formMessage.classList.add('success');
+                optinForm.reset();
+                
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.classList.remove('success');
+                }, 5000);
+            });
         });
 
         // Play button interactivity (placeholder for video embed)
@@ -922,11 +998,18 @@
             });
         }
 
-        // Analytics / Tracking (add your service)
-        // Example: Google Analytics, Heap, Mixpanel
-        // window.addEventListener('scroll', () => {
-        //   // Track scroll depth
-        // });
+        // Track scroll depth (optional analytics)
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            maxScroll = Math.max(maxScroll, scrollPercent);
+            
+            // Log when user reaches sections
+            if (scrollPercent > 25 && !window.trackedQuarters) {
+                window.trackedQuarters = true;
+                console.log('User engaged: 25% scroll depth');
+            }
+        });
     </script>
 </body>
 </html>
